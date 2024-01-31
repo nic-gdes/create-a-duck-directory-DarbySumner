@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+<body>
 <?php include('./components/head.php');
       include('./components/nav.php');
 ?>
-<body>
     <main>
 
     </main> 
-    <?php include('./components/footer.php') 
-    ?>
+    <?php include('./components/footer.php'); ?>
 </body>
 </html>

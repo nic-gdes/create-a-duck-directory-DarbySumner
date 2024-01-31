@@ -1,7 +1,7 @@
 <div class="nav-menu">
     <nav>
         <a href="index.php">
-            <img src="../assets/images/Design_by_Darbs_Logo copy.png" width="auto" height="150px" alt="Design by Darbs Logo">
+            <img src="assets/images/DuckingCool.png" width="auto" height="300px" alt="Design by Darbs Logo">
         </a>
         
     <div class="nav-links">
