@@ -1,5 +1,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Ducks4Life</title>
+    <link rel="sylesheet" href="../styles.css">
+    
 </head>
