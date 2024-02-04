@@ -1,6 +1,4 @@
-body {
-    background-color: rgb(171, 117, 117);
-}
+body
 
 /*Nav links*/
 a {
@@ -25,4 +23,9 @@ a {
   
   .container {
     padding: 2px 16px;
+  }
+
+  .welcome {
+    width: 200px;
+    padding: 20px;
   }
