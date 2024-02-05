@@ -1,5 +1,5 @@
+
 <div class="nav-footer">
-   
         <a href="index.php">Home</a>
         <a href="profile.php">Profile</a>
         <a href="create-duck.php">Create a Duck</a>
