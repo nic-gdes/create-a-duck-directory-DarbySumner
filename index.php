@@ -4,7 +4,7 @@
     include('./config/db.php');
 
     // creat SQL Query
-    $sql = "SELECT name,favorite_foods,img_src FROM ducks"
+    $sql = "SELECT name,favorite_foods,img_src FROM ducks";
 
     // query the DB and add the result to a php array
     $result = mysqli_query($conn, $sql);
@@ -12,9 +12,7 @@
 
     // free result from memory and close SQL connection
     mysqli_free_result($result);
-    msqli_close($conn);
-
-    print_r($ducks);
+    mysqli_close($conn);
 ?>
 
 
@@ -35,26 +33,36 @@
 
 <main>
     <div class="section">
-        
+        <?php foreach ($ducks as $duck) : ?>
         <div class="card">
-        <img src="assets/images/Duck1.png" alt="duck1" width="200px">
+            <img src="<?php echo $duck["img_src"]; ?>" alt="duck1" width="200px">
         <div class="container">
-            <h4><b>Duck Name</b></h4> 
+            <h4><?php echo $duck["name"]; ?></h4> 
             <p>Favorite Foods</p>
-            <p>Item 1</p>
-            <p>Item 2</p>
-            <p>Item 3</p>
+            <ul class="favorite-foods">
+                <li>Item 1</li>
+                <li>Item 2</li>
+                <li>Item 3</li>
+            </ul>
         </div>
         </div>
+
+    <?php endforeach ?>
 
         <div class="card">
         <img src="assets/images/Duck2.png" alt="duck2" width="200px">
         <div class="container">
-            <h4><b>Duck Name</b></h4> 
-            <p>Favorite Foods</p>
-            <p>Item 1</p>
-            <p>Item 2</p>
-            <p>Item 3</p>
+            <h4>Duck Name</h4>
+            <?php $foods_list = explode("," , $duck["favorite_foods"]);
+        
+            ?> 
+
+            <ul class="favorite-foods">
+
+               <?php foreach($foods_list as $food): ?> 
+                <li><?php echo $food ?></li>
+                <?php endforeach ?>
+            </ul>
 
         </div>
         </div>
@@ -62,11 +70,12 @@
         <div class="card">
         <img src="assets/images/Duck3.png" alt="duck3" width="200px">
         <div class="container">
-            <h4><b>Duck Name</b></h4> 
-            <p>Favorite Foods</p>
-            <p>Item 1</p>
-            <p>Item 2</p>
-            <p>Item 3</p> 
+            <h4>Duck Name</h4> 
+            <ul class="favorite-foods">
+                <li>Item 1</li>
+                <li>Item 2</li>
+                <li>Item 3</li>
+            </ul> 
         </div>
     </div>
 </main> 

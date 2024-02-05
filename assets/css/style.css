@@ -149,3 +149,6 @@ input[type=submit]:hover {
   padding-bottom: 16px;
 }
 
+li {
+  list-style-type: none;
+}
