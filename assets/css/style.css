@@ -7,7 +7,8 @@ body {
   background-color: whitesmoke;
   font-family: Arial, Helvetica, sans-serif;
   margin: 0;
-  width: 100%;
+  width: 90%;
+  height: auto;
 }
 
 .header {
@@ -147,3 +148,4 @@ input[type=submit]:hover {
 .upload {
   padding-bottom: 16px;
 }
+
