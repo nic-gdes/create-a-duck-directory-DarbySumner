@@ -19,7 +19,7 @@ if (isset($_POST ['submit'])) {
 
         <div class="contact">
             <form action="./contact.php" method="POST">
-                <label for="fname">Name</label>
+                <label for="fname">Duck Name</label>
                 <input type="text" id="name" name="name" placeholder="Your name..">
 
                 <label for="lname">Favorite Foods</label>
@@ -28,7 +28,7 @@ if (isset($_POST ['submit'])) {
                 <input type="submit" value="Upload Image">
             </div>
             
-                <label for="subject">Subject</label>
+                <label for="subject">Biography</label>
                 <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
             
                 <input type="submit" value="Submit">
