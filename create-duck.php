@@ -1,38 +1,74 @@
-<?php include('./components/nav.php');?>
-<?php include('./components/head.php');?>
 
-<? php 
-
+<?php
+// check for post
 if (isset($_POST ['submit'])) {
 
-    $name = htmlspecialchars($_POST(['name'])); 
-    $email = htmlspecialchars($_POST(['email'])); 
-    $message = htmlspecialchars($_POST(['message']));
+   
+// create error array
+$errors = array(
+    "name" => "",
+    "favorite_foods" => "",
+    "biography" => ""
+    );
 
-    echo $name . ", " . $email . ", " . $message;
+
+    $name = htmlspecialchars($_POST(['name'])); 
+    $favorite_foods = htmlspecialchars($_POST(['favorite_foods'])); 
+    $biography = htmlspecialchars($_POST(['biography']));
+
+    if(empty($name)) {
+        // if the name is empty
+        $errors['name'] = "A name is required.";
+    } else {
+        //if the name is not empty
+        if(!preg_match('/^[a-z\s]+$/i', $name)) { 
+            $errors["name"] = "The name has illegal characters";
+    }
+
+   
+    }
+
+    if(preg_match('/^[a-z,\s]+$/i', $favorite_foods)) {
+        //echo "there is a name";ame
+    } else {
+        $errors["favorite_foods"] = "Favorite foods must be separated by a comma";
+    }
+
+    print_r($errors);
 }
+
+
+
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<?php include('./components/nav.php');?>
+<?php include('./components/head.php');?>
 
     <main>
 
       <h3>Create a Duck!</h3>
 
-        <div class="contact">
-            <form action="./contact.php" method="POST">
-                <label for="fname">Duck Name</label>
-                <input type="text" id="name" name="name" placeholder="Your name..">
+        <div class="name">
+            <form action="./create-duck.php" id="name" method="POST">
 
-                <label for="lname">Favorite Foods</label>
-                <input type="text" id="favfoods" name="favfoods" placeholder="Favorite foods..">
+                <label for="fname">Duck Name</label>
+                <input type="text" id="name" name="name" placeholder="Your name.." required>
+
+                <label for="subject">Favorite Foods</label>
+                <input type="text" id="favfoods" name="favfoods" placeholder="Favorite foods.." required>
+
             <div class="upload">
                 <input type="submit" value="Upload Image">
             </div>
             
+            <div class="bio">
                 <label for="subject">Biography</label>
-                <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
-            
+                <textarea id="subject" name="subject" placeholder="Tell us about your duck.." style="height:200px" required></textarea>
                 <input type="submit" value="Submit">
-          
+            </div>  
             </form>
         </div> 
              
