@@ -1,20 +1,19 @@
 
 <?php
 // check for post
-if (isset($_POST ['submit'])) {
+if (isset($_POST['submit'])) {
 
    
 // create error array
 $errors = array(
     "name" => "",
     "favorite_foods" => "",
-    "biography" => ""
+    "biography" => "",
     );
 
-
-    $name = htmlspecialchars($_POST(['name'])); 
-    $favorite_foods = htmlspecialchars($_POST(['favorite_foods'])); 
-    $biography = htmlspecialchars($_POST(['biography']));
+    $name = htmlspecialchars($_POST['name']); 
+    $favorite_foods = htmlspecialchars($_POST['favorite_foods']); 
+    $biography = htmlspecialchars($_POST['biography']);
 
     if(empty($name)) {
         // if the name is empty
@@ -29,7 +28,7 @@ $errors = array(
     }
 
     if(preg_match('/^[a-z,\s]+$/i', $favorite_foods)) {
-        //echo "there is a name";ame
+       
     } else {
         $errors["favorite_foods"] = "Favorite foods must be separated by a comma";
     }
@@ -54,19 +53,19 @@ $errors = array(
         <div class="name">
             <form action="./create-duck.php" id="name" method="POST">
 
-                <label for="fname">Duck Name</label>
+                <label for="name">Duck Name</label>
                 <input type="text" id="name" name="name" placeholder="Your name.." required>
 
-                <label for="subject">Favorite Foods</label>
-                <input type="text" id="favfoods" name="favfoods" placeholder="Favorite foods.." required>
+                <label for="favorite_foods">Favorite Foods</label>
+                <input type="text" id="favfoods" name="favorite_foods" placeholder="Favorite foods.." required>
 
             <div class="upload">
                 <input type="submit" value="Upload Image">
             </div>
             
             <div class="bio">
-                <label for="subject">Biography</label>
-                <textarea id="subject" name="subject" placeholder="Tell us about your duck.." style="height:200px" required></textarea>
+                <label for="biography">Biography</label>
+                <textarea id="subject" name="biography" placeholder="Tell us about your duck.." style="height:200px" required></textarea>
                 <input type="submit" value="Submit">
             </div>  
             </form>
