@@ -46,7 +46,7 @@ $errors = array(
 <?php include('./components/nav.php');?>
 <?php include('./components/head.php');?>
 
-    <main>
+   
 
       <h3>Create a Duck!</h3>
 
@@ -71,7 +71,7 @@ $errors = array(
             </form>
         </div> 
              
-      </main>
+
 
 
 
