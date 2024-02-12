@@ -20,24 +20,46 @@ $errors = array(
         $errors['name'] = "A name is required.";
     } else {
         //if the name is not empty
+
         if(!preg_match('/^[a-z\s]+$/i', $name)) { 
-            $errors["name"] = "The name has illegal characters";
+            // "echo there is a name";
     }
-
+        $errors["name"] = "This name has illegal characters";}
    
-    }
 
-    if(preg_match('/^[a-z,\s]+$/i', $favorite_foods)) {
-       
+    if(empty($favorite_foods)) {
+        $errors['datalist'] = "No fav foods? weirdo";
     } else {
-        $errors["favorite_foods"] = "Favorite foods must be separated by a comma";
-    }
-
-    print_r($errors);
+    if(preg_match('/^[a-z,\s]+$/i', $favorite_foods)) {
+    } 
+        $errors["datalist"] = "The name must have a comma between items";}
+        print_r($errors);
+}
+  
+// check if bio is empty
+if(empty($message)) {
+    $errors["message"] = "A bio is required";
 }
 
 
+if(!array_filter($errors)) {
+    // everything is good, form is valid
 
+    // connect ot the database
+    require('./config/db.php');
+
+    // build sql query
+    $sql = "INSTERT INTO ducks (name, favorite_foods, bio) VALUES ($name, $favorite_foods, $bio)";
+
+    //execute query in mysql
+    mysqli_query($conn,$sql);
+
+    // load homepage
+    header("Location: ./index.php");
+    } else {
+
+        // if there are any errors
+}
 ?>
 
 <!DOCTYPE html>
@@ -46,28 +68,40 @@ $errors = array(
 <?php include('./components/nav.php');?>
 <?php include('./components/head.php');?>
 
+<?php $page_title = "Contact";?>
+
    <main>
 
       <h3>Create a Duck!</h3>
 
         <div class="name">
             <form action="./create-duck.php" id="name" method="POST">
+            <ol>
+                <li><label for="name">Duck Name</label>
+                <div class="error">A name is required</div>
 
-                <label for="name">Duck Name</label>
-                <input type="text" id="name" name="name" placeholder="Your name.." required>
+                <?php if (isset($errors['name'])) {
+                    echo "<div class='error'>" . $errors["name"] . "</div>";
+                }
+                ?>
 
-                <label for="favorite_foods">Favorite Foods</label>
-                <input type="text" id="favfoods" name="favorite_foods" placeholder="Favorite foods.." required>
+                <input type="text" id="name" name="name" placeholder="Your name.." required <?php if(
+                    isset($name)) { echo $name; } ?>
+                ></li>
+                
+                <li><label for="favorite_foods">Favorite Foods</label>
+                <input type="text" id="favfoods" name="favorite_foods" placeholder="Favorite foods.." required></li>
 
-            <div class="upload">
-                <input type="submit" value="Upload Image">
-            </div>
-            
-            <div class="bio">
-                <label for="biography">Biography</label>
-                <textarea id="subject" name="biography" placeholder="Tell us about your duck.." style="height:200px" required></textarea>
-                <input type="submit" value="Submit">
-            </div>  
+                <div class="upload">
+                   <input type="submit" value="Upload Image">
+                </div>
+                
+                <div class="bio">
+                    <li><label for="biography">Biography</label>
+                    <textarea id="subject" name="biography" placeholder="Tell us about your duck.." style="height:200px" required></textarea></li>
+                    <input type="submit" value="Submit">
+                </div> 
+            </ol> 
             </form>
         </div> 
 </main>       
