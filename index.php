@@ -33,8 +33,9 @@
     </div>
 
         <?php foreach ($ducks as $duck) : ?>
-        <div class="card">
-            <img src="<?php echo $duck["img_src"]; ?>" alt="duck1" width="200px">
+            
+    <div class="card">
+            <img src="<?php echo $duck["img_src"]; ?>" alt="duck1" width="300px" height="300px">
         <div class="container">
             <h4><?php echo $duck["name"]; ?></h4> 
             <p>Favorite Foods</p>
@@ -44,30 +45,33 @@
                 <li>Item 3</li>
             </ul>
         </div>
-        </div>
+    </div>
 
     <?php endforeach ?>
 
-        <div class="card">
-        <img src="assets/images/Duck2.png" alt="duck2" width="200px">
+    <div class="card">
+        <img src="assets/images/Duck2.png" alt="duck2" width="300px">
+
         <div class="container">
             <h4>Duck Name</h4>
-            <?php $foods_list = explode("," , $duck["favorite_foods"]);
-        
+             <?php $foods_list = explode("," , $duck["favorite_foods"]);
+            
             ?> 
 
-            <ul class="favorite-foods">
+             <ul class="favorite-foods">
 
-               <?php foreach($foods_list as $food): ?> 
+            <?php foreach($foods_list as $food): ?> 
                 <li><?php echo $food ?></li>
                 <?php endforeach ?>
             </ul>
 
         </div>
-        </div>
 
-        <div class="card">
-        <img src="assets/images/Duck3.png" alt="duck3" width="200px">
+    </div>
+
+    <div class="card">
+        <img src="assets/images/Duck3.png" alt="duck3" width="300px">
+
         <div class="container">
             <h4>Duck Name</h4> 
             <ul class="favorite-foods">
