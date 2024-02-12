@@ -5,7 +5,6 @@
 <?php include('./components/head.php');?>
 
 <main>
-    <section>
     <div class="card-profile">
             <img src="assets/images/Duck1.png" alt="duck1" width="200px">
             <div class="container-2">
@@ -16,6 +15,5 @@
                 <p>Item 3</p>
             </div>
             </div>
-    </section>
 </main>
 <?php include('./components/footer.php');?>

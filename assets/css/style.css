@@ -1,4 +1,6 @@
-
+* {
+  box-sizing: border-box;
+}
 
 body {
 
@@ -15,8 +17,7 @@ body {
   main {
     display: grid;
     width: 90%;
-    margin: 0%;
-    height: auto;
+
   }
 
 /*Nav links*/
@@ -32,15 +33,6 @@ a {
 
 a:hover {
   color: rgb(120, 63, 82);
-}
-
-.section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 50%;
-  
-
 }
 
 .card {
