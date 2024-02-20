@@ -18,7 +18,7 @@ $errors = array(
     if(empty($name)) {
         // if the name is empty
     
-        $errors['name'] = "A name is required.";}
+        $errors['name'] = "A name is required.";
 
     } else {
         //if the name is not empty
@@ -26,12 +26,12 @@ $errors = array(
         if(!preg_match('/^[a-z\s]+$/i', $name)) { 
             // "echo there is a name";
     
-        $errors["name"] = "This name has illegal characters";}
-   
+        $errors["name"] = "This name has illegal characters.";}
+    }
 
     if(empty($favorite_foods)) {
 
-        $errors['datalist'] = "No fav foods? weirdo";}
+        $errors['datalist'] = "No fav foods? weirdo";
 
     } else {
 
@@ -40,10 +40,11 @@ $errors = array(
     
         $errors["datalist"] = "The name must have a comma between items";}
         
-}
-  
+    }
+} 
 // check if bio is empty
 if(empty($message)) {
+    
     $errors["message"] = "A bio is required";
 }
 
