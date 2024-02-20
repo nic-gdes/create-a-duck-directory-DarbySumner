@@ -36,6 +36,7 @@
             
     <div class="card">
             <img src="<?php echo $duck["img_src"]; ?>" alt="duck1" width="300px" height="300px">
+
         <div class="container">
 
             <h4><?php echo $duck["name"]; ?></h4> 
@@ -54,10 +55,9 @@
     </div>
     <?php endforeach ?>
 
-
-    
-
 </main> 
+
     <?php include('./components/footer.php'); ?>
+    
 </body>
 </html>

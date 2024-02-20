@@ -1,4 +1,4 @@
-<main>
+
     <div class="header">
         <div>
             <a href="index.php">
@@ -15,4 +15,3 @@
         </div>  
         </nav>
     </div>
-</main>
