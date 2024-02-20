@@ -17,23 +17,29 @@ $errors = array(
 
     if(empty($name)) {
         // if the name is empty
-        $errors['name'] = "A name is required.";
+    
+        $errors['name'] = "A name is required.";}
+
     } else {
         //if the name is not empty
 
         if(!preg_match('/^[a-z\s]+$/i', $name)) { 
             // "echo there is a name";
-    }
+    
         $errors["name"] = "This name has illegal characters";}
    
 
     if(empty($favorite_foods)) {
-        $errors['datalist'] = "No fav foods? weirdo";
+
+        $errors['datalist'] = "No fav foods? weirdo";}
+
     } else {
-    if(preg_match('/^[a-z,\s]+$/i', $favorite_foods)) {
-    } 
+
+    if(!preg_match('/^[a-z,\s]+$/i', $favorite_foods)) {
+
+    
         $errors["datalist"] = "The name must have a comma between items";}
-        print_r($errors);
+        
 }
   
 // check if bio is empty
@@ -52,14 +58,23 @@ if(!array_filter($errors)) {
     $sql = "INSTERT INTO ducks (name, favorite_foods, bio) VALUES ($name, $favorite_foods, $bio)";
 
     //execute query in mysql
-    mysqli_query($conn,$sql);
+    if (mysqli_query($conn, $sql)) {
+
+        // connection and query are successful
 
     // load homepage
     header("Location: ./index.php");
     } else {
 
-        // if there are any errors
+  // connection or query have failed with an error. We want to see the error.
+
+   echo "Error: " . $sql . "<br />" . mysqli_error($conn);             
+
 }
+
+}
+
+
 ?>
 
 <!DOCTYPE html>
