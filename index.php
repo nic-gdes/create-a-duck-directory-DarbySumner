@@ -13,6 +13,8 @@
     // free result from memory and close SQL connection
     mysqli_free_result($result);
     mysqli_close($conn);
+
+    print_r($ducks);
 ?>
 
 
