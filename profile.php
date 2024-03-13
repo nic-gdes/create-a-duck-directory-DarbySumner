@@ -1,5 +1,10 @@
 <?php 
+require('./config/db.php'); // Create your database connection
 
+// get url query parameters
+$duck = $_GET['id']; 
+// use the $_GET superglobal to access URL parameters, specifically the "id" parameter
+echo $duck;
 $duck_is_live = false;
 
 if (isset($_GET['id'])) {
@@ -46,7 +51,7 @@ if (isset($_GET['id'])) {
             </div>
     
     
-    <? php else : ?>
+    <?php else : ?>
 
         <section class ="no duck">
             <h1>Sorry, this duck does not exist</h1>
