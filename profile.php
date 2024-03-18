@@ -1,18 +1,12 @@
 <?php 
 require('./config/db.php'); // Create your database connection
 
-// get url query parameters
-$duck = $_GET['id']; 
 // use the $_GET superglobal to access URL parameters, specifically the "id" parameter
-echo $duck;
 $duck_is_live = false;
 
 if (isset($_GET['id'])) {
     //Assign a variable to the id
     $id = htmlspecialchars($_GET['id']);
-    // Get duck info from database
-    // Connect to db
-    require('./config/db.php');
 
     // Create a query to select the intended duck from the db
     $sql = "SELECT id, name, favorite_foods, bio, img_src FROM ducks WHERE id=$id";
@@ -24,6 +18,10 @@ if (isset($_GET['id'])) {
     mysqli_close($conn);
 
     //check if duck is empty = if it has content and mark duck is live as true
+    if (isset($duck["id"])) {
+        $duck_is_live = true;
+    }
+
 
 }
 
