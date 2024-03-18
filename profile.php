@@ -23,6 +23,8 @@ if (isset($_GET['id'])) {
     mysqli_free_result($result);
     mysqli_close($conn);
 
+    //check if duck is empty = if it has content and mark duck is live as true
+
 }
 
 
