@@ -26,6 +26,7 @@
 
 <?php include('./components/head.php');?>
 <?php include('./components/nav.php');?>
+<a href='./profile.php'id="<?php echo $duck["id"]?>"><View this Duck></a>
 
 <main>
     <div class="welcome">
@@ -36,10 +37,6 @@
         <?php foreach ($ducks as $duck) : ?>
             
     <div class="card">
-
-        <div>
-            <a href='./profile.php'id="<?php echo $duck["id"]?>">View this Duck></a>
-        </div>
 
             <img src="<?php echo $duck["img_src"]; ?>" alt="duck1" width="300px" height="300px">
 

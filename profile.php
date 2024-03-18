@@ -1,7 +1,6 @@
-<?php 
-require('./config/db.php'); // Create your database connection
-
-
+<?php
+// Create your database connection 
+require('./config/db.php'); 
 
 // get url query parameters
 $duck_id = $_GET['id']; // use the $_GET superglobal to access URL parameters, specifically the "id" parameter
@@ -16,7 +15,7 @@ if (isset($_GET['id'])) {
     $duck_id = mysqli_real_escape_string($conn, $_GET['id']);
 
     // Create a query to select the intended duck from the db
-    $sql = "SELECT name, favorite_foods, bio, img_src FROM ducks WHERE id=$duck_id";
+    $sql = "SELECT name, favorite_foods, bio, img_src FROM ducks WHERE id = $duck_id";
     $result = mysqli_query($conn, $sql);
 
     // Fetch results from query
@@ -38,7 +37,46 @@ if (isset($_GET['id'])) {
 
 }
 
+// Check if the delete button was clicked
+if (isset($_POST['delete'])) {
 
+// Check if the ID parameter is set and not empty
+if (isset($_POST['id']) && !empty($_POST['id'])) {
+
+// Connect to the database (replace with your database credentials)
+$conn = new mysqli('localhost', 'username', 'password', 'database');
+
+// Check connection
+if ($conn->connect_error) {
+die("Connection failed: " . $conn->connect_error);
+
+}
+
+// Prepare and execute the SQL query to delete data
+$id = $_POST['id'];
+
+$sql = "DELETE FROM your_table WHERE id = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $id); // Assuming the ID is an integer
+$stmt->execute();
+
+// Check if the deletion was successful
+if ($stmt->affected_rows > 0) {
+echo "Record deleted successfully";
+
+} else {
+echo "Error: Record not found or could not be deleted";
+}
+
+// Close statement and database connection
+$stmt->close();
+$conn->close();
+
+} else {
+
+echo "Error: ID parameter missing or empty";
+}
+}
 ?>
 
 <!DOCTYPE html>
