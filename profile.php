@@ -1,21 +1,33 @@
 <?php 
 require('./config/db.php'); // Create your database connection
 
+
+// get url query parameters
+$duck_id = $_GET['id']; // use the $_GET superglobal to access URL parameters, specifically the "id" parameter
+echo $duck_id;
+
 // use the $_GET superglobal to access URL parameters, specifically the "id" parameter
 $duck_is_live = false;
 
 if (isset($_GET['id'])) {
+
+    //sanatize input
+    $duck_id = mysqli_real_escape_string($conn, $_GET['id']);
+
+    // Create a query to select the intended duck from the db
+    $sql = "SELECT name, favorite_foods, bio, img_src FROM ducks WHERE id=$duck_id";
+    $result = mysqli_query($conn, $sql);
+
+    // Fetch results from query
+    $duck = mysqli_fetch_assoc($result);
+
     //Assign a variable to the id
     $id = htmlspecialchars($_GET['id']);
 
-    // Create a query to select the intended duck from the db
-    $sql = "SELECT id, name, favorite_foods, bio, img_src FROM ducks WHERE id=$id";
-    $result = mysqli_query($conn, $sql);
-
-    $duck = mysqli_fetch_assoc($result);
-
+    //Free mysql result and close connection
     mysqli_free_result($result);
     mysqli_close($conn);
+    print_r($duck);
 
     //check if duck is empty = if it has content and mark duck is live as true
     if (isset($duck["id"])) {
