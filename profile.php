@@ -2,6 +2,7 @@
 require('./config/db.php'); // Create your database connection
 
 
+
 // get url query parameters
 $duck_id = $_GET['id']; // use the $_GET superglobal to access URL parameters, specifically the "id" parameter
 echo $duck_id;
@@ -61,7 +62,14 @@ if (isset($_GET['id'])) {
                         <p>Item 3</p>
                     </div>
             </div>
-    
+            
+        <form action="./profile.php" method="POST">
+
+            <input type="hidden" name="id_to_delete" value="<?php echo $duck['id']; ?>">
+
+            <input type="submit" name="delete" value="Delete Duck">
+
+        </form>
     
     <?php else : ?>
 
