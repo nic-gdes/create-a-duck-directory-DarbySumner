@@ -27,7 +27,6 @@ if (isset($_GET['id'])) {
     //Free mysql result and close connection
     mysqli_free_result($result);
     mysqli_close($conn);
-    print_r($duck);
 
     //check if duck is empty = if it has content and mark duck is live as true
     if (isset($duck["id"])) {
@@ -43,7 +42,7 @@ if (isset($_POST['delete'])) {
 // Check if the ID parameter is set and not empty
 if (isset($_POST['id']) && !empty($_POST['id'])) {
 
-// Connect to the database (replace with your database credentials)
+// Connect to the database
 $conn = new mysqli('favorite_foods', 'bio', 'img_src');
 
 // Check connection
