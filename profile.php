@@ -44,7 +44,7 @@ if (isset($_POST['delete'])) {
 if (isset($_POST['id']) && !empty($_POST['id'])) {
 
 // Connect to the database (replace with your database credentials)
-$conn = new mysqli('localhost', 'username', 'password', 'database');
+$conn = new mysqli('favorite_foods', 'bio', 'img_src');
 
 // Check connection
 if ($conn->connect_error) {
@@ -55,9 +55,9 @@ die("Connection failed: " . $conn->connect_error);
 // Prepare and execute the SQL query to delete data
 $id = $_POST['id'];
 
-$sql = "DELETE FROM your_table WHERE id = ?";
+$sql = "DELETE FROM ducks WHERE id = $duck_id";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("i", $id); // Assuming the ID is an integer
+$stmt->bind_param("i", $id); 
 $stmt->execute();
 
 // Check if the deletion was successful
